@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUPER SNAP Portfolio</title>
+    <title>SUPER SNAP PORTFOLIO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -16,6 +16,16 @@
             overflow-x: hidden;
             display: flex; flex-direction: column; min-height: 100vh;
             cursor: none; /* Hide default cursor on PC */
+            user-select: none; /* Prevent Text Selection */
+            -webkit-user-select: none;
+        }
+
+        /* 🔥 IMAGE PROTECTION (NO SAVE/COPY) 🔥 */
+        img, video {
+            pointer-events: auto; /* Click work avvali */
+            -webkit-touch-callout: none; /* iOS/Android Long Press Disable */
+            -webkit-user-drag: none; /* Dragging Disable */
+            user-select: none; /* Selection Disable */
         }
 
         /* --- 2. BLUE GLOWING POINTER --- */
@@ -25,22 +35,33 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
             pointer-events: none; transform: translate(-50%, -50%); z-index: 9999; mix-blend-mode: screen;
         }
-        /* Mobile lo cursor vaddu */
-        @media (max-width: 800px) { body { cursor: auto; } .cursor-glow { display: none; } }
+        @media (max-width: 800px) { body { cursor: auto; padding-bottom: 70px; } .cursor-glow { display: none; } }
 
-        /* --- 3. LEFT SIDEBAR (SOCIAL ICONS) - ADDED BACK --- */
+        /* --- 3. SOCIAL BAR (MOBILE BOTTOM) --- */
         .side-social-bar {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column;
             background: rgba(255, 255, 255, 0.1); padding: 15px 10px;
             border-radius: 0 15px 15px 0; z-index: 1000; backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
         .side-icon {
             color: #ffffff; font-size: 1.8rem; margin: 15px 5px; 
             transition: all 0.3s ease; text-decoration: none; display: block;
         }
         .side-icon:hover { color: #00f3ff; transform: scale(1.2); }
+
+        /* PHONE LO KINDAKI MARUTUNDI */
+        @media (max-width: 768px) {
+            .side-social-bar {
+                top: auto; bottom: 0; transform: none; width: 100%;
+                flex-direction: row; justify-content: space-evenly;
+                border-radius: 15px 15px 0 0; background: #000000;
+                border: none; border-top: 1px solid #333; padding: 10px 0;
+            }
+            .side-icon { font-size: 1.5rem; margin: 5px 0; }
+        }
 
         /* --- 4. HEADER --- */
         header {
@@ -58,12 +79,8 @@
             font-size: 2.8rem; margin: 0; letter-spacing: 3px; font-weight: 900;
             text-transform: uppercase; color: #ffffff; line-height: 1.1;
         }
-        .blue-text {
-            color: #4387c3; text-shadow: 0 0 20px rgba(108, 109, 181, 0.908);
-        }
-        p.subtitle {
-            color: #aaaaaa; font-size: 0.9rem; margin-top: 10px; letter-spacing: 1px;
-        }
+        .blue-text { color: #0764bb; text-shadow: 0 0 20px rgba(117, 118, 198, 0.908); }
+        p.subtitle { color: #aaaaaa; font-size: 0.9rem; margin-top: 10px; letter-spacing: 1px; }
 
         /* --- 5. GALLERY GRID --- */
         .gallery-container {
@@ -79,7 +96,7 @@
         }
         .photo-card img, .photo-card video { width: 100%; display: block; border-radius: 10px; cursor: pointer; }
 
-        /* --- 6. INTERACTIONS (BUTTONS) --- */
+        /* --- 6. INTERACTIONS --- */
         .interactions {
             position: absolute; bottom: 0; left: 0; width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
@@ -96,31 +113,30 @@
         }
         .btn-action:hover { transform: scale(1.1); background: rgba(255,255,255,0.4); }
 
-        /* BUTTON COLORS */
         .btn-like.active-like { color: #ff0055; background: rgba(255, 0, 85, 0.2); font-weight: bold; }
         .btn-like.active-like i { color: #ff0055; }
-
         .btn-dislike.active-dislike { color: #ffae00; background: rgba(255, 174, 0, 0.2); font-weight: bold; }
         .btn-dislike.active-dislike i { color: #ffae00; }
         .btn-share:hover { background: #25d366; color: white; }
 
-        /* --- 7. SCROLL TO TOP BUTTON - ADDED BACK --- */
+        /* --- 7. SCROLL TO TOP --- */
         #scrollTopBtn {
             position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%;
             background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
             color: white; font-size: 1.2rem; cursor: pointer; z-index: 9000; display: none; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; /* Center the arrow */
+            display: flex; align-items: center; justify-content: center;
         }
         #scrollTopBtn:hover { background: #00f3ff; color: black; transform: translateY(-5px); }
+        @media (max-width: 768px) { #scrollTopBtn { bottom: 80px; right: 20px; } }
 
-
-        /* --- 8. LIGHTBOX & EXTRAS --- */
+        /* --- 8. LIGHTBOX --- */
         .lightbox { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column; z-index: 2000; 
         }
         .lightbox img, .lightbox video { 
             max-width: 90%; max-height: 75vh; border: 2px solid #333; box-shadow: 0 0 50px rgba(255,255,255,0.1); 
+            /* Lightbox lo matram long press work avvali (optional), kani ikkada disable chestunnam default ga */
         }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
         
@@ -132,30 +148,17 @@
         .download-btn:hover { transform: scale(1.05); background: #00f3ff; }
 
         footer { text-align: center; padding: 30px; border-top: 1px solid #111; color: #666; margin-top: auto; font-size: 0.8rem;}
-   
+
         /* --- LOADING SCREEN --- */
-        #loading-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000000; z-index: 10000;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.8s ease-out;
-        }
-        .loader-text {
-            font-family: 'Verdana', sans-serif; color: #82dbe0; font-size: 2rem; font-weight: 900;
-            letter-spacing: 5px; text-transform: uppercase; margin: 0 0 15px 0;
-            text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
-        }
+        #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease-out; }
+        .loader-text { font-family: 'Verdana', sans-serif; color: #82dbe0; font-size: 2rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; margin: 0 0 15px 0; text-shadow: 0 0 15px rgba(0, 243, 255, 0.5); }
         .progress-container { width: 150px; height: 4px; background-color: #333333; border-radius: 2px; overflow: hidden; }
         .progress-bar { height: 100%; width: 0%; background-color: #00ffff; box-shadow: 0 0 10px #00f3ff; transition: width 3s ease-in-out; }
     </style>
 </head>
-<body>
-
-    <div id="loading-screen">
+<body oncontextmenu="return false;"> <div id="loading-screen">
         <h2 class="loader-text">SESHANK</h2>
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
+        <div class="progress-container"><div class="progress-bar"></div></div>
     </div>
 
     <div class="cursor-glow"></div>
@@ -172,16 +175,11 @@
         <p class="subtitle">Capturing the World | Mobile Photography Portfolio</p>
     </header>
 
-    <div class="gallery-container" id="gallery">
-        </div>
+    <div class="gallery-container" id="gallery"></div>
 
-    <footer>
-        <p>"The world through my lens. © Super Snap"</p>
-    </footer>
+    <footer><p>"The world through my lens. © Super Snap"</p></footer>
     
-    <button id="scrollTopBtn" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
         <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
@@ -193,6 +191,9 @@
     </div>
 
     <script>
+        // --- DISABLE LONG PRESS (CONTEXT MENU) ON IMAGES ---
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
         // Loading
         window.addEventListener('load', () => {
             const screen = document.getElementById('loading-screen');
@@ -213,13 +214,13 @@
             });
         }
 
-        // Scroll To Top Logic
+        // Scroll
         const scrollBtn = document.getElementById('scrollTopBtn');
         window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                scrollBtn.style.display = "flex"; // Show button
+                scrollBtn.style.display = "flex";
             } else {
-                scrollBtn.style.display = "none"; // Hide button
+                scrollBtn.style.display = "none";
             }
         };
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
@@ -246,14 +247,12 @@
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxVid = document.getElementById('lightbox-vid');
             const downloadLink = document.getElementById('download-link');
-            
             if (event.target !== lightboxImg && event.target !== lightboxVid && !downloadLink.contains(event.target)) {
                 lightbox.style.display = "none"; document.body.style.overflow = "auto";
                 lightboxVid.pause(); lightboxVid.src = ""; lightboxImg.src = "";
             }
         }
 
-        // Share Function
         async function shareContent(filePath) {
             const fullUrl = window.location.href + filePath;
             if (navigator.share) {
@@ -282,23 +281,17 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // 3. CORRECT FILE NAMES (Checked against your screenshot)
+        // CORRECT FILE NAMES
         const myMedia = [
             'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg', 
             'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg', 'img10.jpg', 
-            'img11.jpg', 
-            'img12.jpeg', // Corrected
-            'img13.jpg', 'img14.jpg', 'img15.jpg', 
+            'img11.jpg', 'img12.jpeg', 'img13.jpg', 'img14.jpg', 'img15.jpg', 
             'img16.jpg', 'img17.jpg', 'img18.jpg', 'img19.jpg', 'img20.jpg', 
             'img21.jpg', 'img22.jpg', 'img23.jpg', 'img24.jpg', 'img25.jpg',  
-            'img26.jpeg', // Corrected
-            'img27.jpg', 'img28.jpg', 
-            'img29.jpeg', // Corrected
-            'img30.jpg',
-            'img31.jpeg', // Corrected
-            'img32.jpg', 'img33.jpg', 'img34.jpg', 'img35.jpg', 
+            'img26.jpeg', 'img27.jpg', 'img28.jpg', 'img29.jpeg', 'img30.jpg',
+            'img31.jpeg', 'img32.jpg', 'img33.jpg', 'img34.jpg', 'img35.jpg', 
             'img36.jpg', 'img37.jpg', 'img38.jpg', 'img39.jpg', 'img40.jpg', 
-            'img41.jpeg'  // Corrected
+            'img41.jpeg'
         ];
 
         const galleryDiv = document.getElementById('gallery');
@@ -336,7 +329,6 @@
                 `;
                 galleryDiv.appendChild(card);
 
-                // --- DATABASE LOGIC ---
                 const likeRef = ref(db, 'likes/' + photoId);
                 const dislikeRef = ref(db, 'dislikes/' + photoId);
                 const btnLike = document.getElementById(`like_${photoId}`);
@@ -345,48 +337,42 @@
                 onValue(likeRef, (snap) => document.getElementById(`l_count_${photoId}`).innerText = snap.val() || 0);
                 onValue(dislikeRef, (snap) => document.getElementById(`d_count_${photoId}`).innerText = snap.val() || 0);
 
-                // LIKE BUTTON
+                // LIKE
                 btnLike.onclick = (e) => {
                     e.stopPropagation();
                     let currentStatus = localStorage.getItem(`status_${photoId}`);
-
                     if (currentStatus === 'liked') {
                         runTransaction(likeRef, (c) => (c && c > 0 ? c - 1 : 0)); 
                         localStorage.removeItem(`status_${photoId}`);
                         btnLike.classList.remove('active-like');
-                    } 
-                    else if (currentStatus === 'disliked') {
+                    } else if (currentStatus === 'disliked') {
                         runTransaction(dislikeRef, (c) => (c && c > 0 ? c - 1 : 0));
                         runTransaction(likeRef, (c) => (c || 0) + 1);
                         localStorage.setItem(`status_${photoId}`, 'liked');
                         btnDislike.classList.remove('active-dislike');
                         btnLike.classList.add('active-like');
-                    } 
-                    else {
+                    } else {
                         runTransaction(likeRef, (c) => (c || 0) + 1);
                         localStorage.setItem(`status_${photoId}`, 'liked');
                         btnLike.classList.add('active-like');
                     }
                 };
 
-                // DISLIKE BUTTON
+                // DISLIKE
                 btnDislike.onclick = (e) => {
                     e.stopPropagation();
                     let currentStatus = localStorage.getItem(`status_${photoId}`);
-
                     if (currentStatus === 'disliked') {
                         runTransaction(dislikeRef, (c) => (c && c > 0 ? c - 1 : 0)); 
                         localStorage.removeItem(`status_${photoId}`);
                         btnDislike.classList.remove('active-dislike');
-                    } 
-                    else if (currentStatus === 'liked') {
+                    } else if (currentStatus === 'liked') {
                         runTransaction(likeRef, (c) => (c && c > 0 ? c - 1 : 0));
                         runTransaction(dislikeRef, (c) => (c || 0) + 1);
                         localStorage.setItem(`status_${photoId}`, 'disliked');
                         btnLike.classList.remove('active-like');
                         btnDislike.classList.add('active-dislike');
-                    } 
-                    else {
+                    } else {
                         runTransaction(dislikeRef, (c) => (c || 0) + 1);
                         localStorage.setItem(`status_${photoId}`, 'disliked');
                         btnDislike.classList.add('active-dislike');
@@ -394,7 +380,6 @@
                 };
             });
         }
-
         renderPhotos();
     </script>
 </body>
