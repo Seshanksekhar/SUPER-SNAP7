@@ -3,22 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUPER SNAP PORTFOLIO</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="google-site-verification" content="8U1nUtw8shoqDrcjUYhpHNgPwi6VwOLUPMpWkXX8t8s" />
     <title>Seshank Sekhar Photography | Super Snap Portfolio</title>
-    
-    <meta name="description" content="Welcome to the official photography portfolio of Seshank Sekhar. Explore mobile photography, nature shots, and candid moments captured by Super Snap.">
-    
-    <meta name="keywords" content="Seshank Sekhar, Super Snap, Mobile Photography, Photographer in Vizag, Photographer in Vizianagaram, Garividi Photography, Nature Shots, Best Camera Shots, Andhra Pradesh Photographers">
-    
+    <meta name="description" content="Welcome to the official photography portfolio of Seshank Sekhar. Explore mobile photography, nature shots, and candid moments captured by Super Snap in Vizag and Vizianagaram.">
+    <meta name="keywords" content="Seshank Sekhar, Super Snap, Mobile Photography, Photographer in Vizag, Photographer in Vizianagaram, Garividi Photography, Nature Shots, Best Camera Shots">
     <meta name="author" content="Seshank Sekhar">
 
-    <link rel="stylesheet" href="...">
-<meta name="google-site-verification" content="8U1nUtw8shoqDrcjUYhpHNgPwi6VwOLUPMpWkXX8t8s" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         /* --- 1. GLOBAL SETTINGS --- */
         body {
@@ -28,20 +21,15 @@
             color: white;
             overflow-x: hidden;
             display: flex; flex-direction: column; min-height: 100vh;
-            cursor: none; /* Hide default cursor on PC */
-            user-select: none; /* Prevent Text Selection */
-            -webkit-user-select: none;
+            cursor: none; user-select: none; -webkit-user-select: none;
         }
 
-        /* 🔥 IMAGE PROTECTION (NO SAVE/COPY) 🔥 */
+        /* --- 2. IMAGE PROTECTION --- */
         img, video {
-            pointer-events: auto; /* Click work avvali */
-            -webkit-touch-callout: none; /* iOS/Android Long Press Disable */
-            -webkit-user-drag: none; /* Dragging Disable */
-            user-select: none; /* Selection Disable */
+            pointer-events: auto; -webkit-touch-callout: none; -webkit-user-drag: none; user-select: none;
         }
 
-        /* --- 2. BLUE GLOWING POINTER --- */
+        /* --- 3. CURSOR GLOW --- */
         .cursor-glow {
             position: fixed; top: 0; left: 0; width: 30px; height: 30px; border-radius: 50%;
             background: radial-gradient(circle, #00f3ff 10%, rgba(0, 243, 255, 0.3) 50%, transparent 70%);
@@ -50,7 +38,7 @@
         }
         @media (max-width: 800px) { body { cursor: auto; padding-bottom: 70px; } .cursor-glow { display: none; } }
 
-        /* --- 3. SOCIAL BAR (MOBILE BOTTOM) --- */
+        /* --- 4. SIDE BAR (LEFT SIDE) --- */
         .side-social-bar {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column;
@@ -60,8 +48,8 @@
             transition: all 0.3s ease;
         }
         .side-icon {
-            color: #ffffff; font-size: 1.8rem; margin: 15px 5px; 
-            transition: all 0.3s ease; text-decoration: none; display: block;
+            color: #ffffff; font-size: 1.5rem; margin: 15px 5px; 
+            transition: all 0.3s ease; text-decoration: none; display: block; cursor: pointer;
         }
         .side-icon:hover { color: #00f3ff; transform: scale(1.2); }
 
@@ -73,14 +61,13 @@
                 border-radius: 15px 15px 0 0; background: #000000;
                 border: none; border-top: 1px solid #333; padding: 10px 0;
             }
-            .side-icon { font-size: 1.5rem; margin: 5px 0; }
         }
 
-        /* --- 4. HEADER --- */
+        /* --- 5. HEADER --- */
         header {
             text-align: center; padding: 30px 20px;
             background: linear-gradient(to bottom, #111, #000); 
-            border-bottom: 1px solid #222; margin-bottom: 40px;
+            border-bottom: 1px solid #222; margin-bottom: 20px;
         }
         .profile-pic {
             width: 110px; height: 110px; object-fit: cover; border-radius: 50%;
@@ -95,7 +82,7 @@
         .blue-text { color: #0764bb; text-shadow: 0 0 20px rgba(117, 118, 198, 0.908); }
         p.subtitle { color: #aaaaaa; font-size: 0.9rem; margin-top: 10px; letter-spacing: 1px; }
 
-        /* --- 5. GALLERY GRID --- */
+        /* --- 6. GALLERY --- */
         .gallery-container {
             margin-top: 15px; column-count: 3; column-gap: 20px; padding: 0 20px;
             max-width: 1400px; margin-left: auto; margin-right: auto; flex: 1;
@@ -109,7 +96,6 @@
         }
         .photo-card img, .photo-card video { width: 100%; display: block; border-radius: 10px; cursor: pointer; }
 
-        /* --- 6. INTERACTIONS --- */
         .interactions {
             position: absolute; bottom: 0; left: 0; width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
@@ -125,52 +111,49 @@
             transition: transform 0.2s;
         }
         .btn-action:hover { transform: scale(1.1); background: rgba(255,255,255,0.4); }
-
         .btn-like.active-like { color: #ff0055; background: rgba(255, 0, 85, 0.2); font-weight: bold; }
-        .btn-like.active-like i { color: #ff0055; }
         .btn-dislike.active-dislike { color: #ffae00; background: rgba(255, 174, 0, 0.2); font-weight: bold; }
-        .btn-dislike.active-dislike i { color: #ffae00; }
-        .btn-share:hover { background: #25d366; color: white; }
 
-        /* --- 7. SCROLL TO TOP --- */
+        /* --- 7. ABOUT MODAL (POPUP) --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 3000;
+            justify-content: center; align-items: center; padding: 20px;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .about-content {
+            background: #111; padding: 40px 30px; border-radius: 20px; border: 1px solid #333;
+            max-width: 600px; text-align: center; position: relative;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.15); transform: scale(0.9); transition: transform 0.3s ease;
+        }
+        .close-modal {
+            position: absolute; top: 15px; right: 20px; color: #666; font-size: 1.5rem; cursor: pointer;
+        }
+        .close-modal:hover { color: white; }
+
+        /* --- 8. EXTRAS --- */
         #scrollTopBtn {
             position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
-            color: white; font-size: 1.2rem; cursor: pointer; z-index: 9000; display: none; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); display: none;
+            justify-content: center; align-items: center; color: white; cursor: pointer; z-index: 9000;
         }
-        #scrollTopBtn:hover { background: #00f3ff; color: black; transform: translateY(-5px); }
         @media (max-width: 768px) { #scrollTopBtn { bottom: 80px; right: 20px; } }
-
-        /* --- 8. LIGHTBOX --- */
-        .lightbox { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column; z-index: 2000; 
-        }
-        .lightbox img, .lightbox video { 
-            max-width: 90%; max-height: 75vh; border: 2px solid #333; box-shadow: 0 0 50px rgba(255,255,255,0.1); 
-            /* Lightbox lo matram long press work avvali (optional), kani ikkada disable chestunnam default ga */
-        }
-        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
         
-        .download-btn { 
-            margin-top: 20px; padding: 12px 30px; background: white; color: black; 
-            text-decoration: none; font-weight: bold; font-size: 1rem; border-radius: 30px; 
-            display: flex; align-items: center; gap: 10px; transition: transform 0.3s, background 0.3s;
-        }
-        .download-btn:hover { transform: scale(1.05); background: #00f3ff; }
-
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column; z-index: 2000; }
+        .lightbox img, .lightbox video { max-width: 90%; max-height: 75vh; border: 2px solid #333; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
+        .download-btn { margin-top: 20px; padding: 12px 30px; background: white; color: black; text-decoration: none; border-radius: 30px; font-weight: bold; }
+        
         footer { text-align: center; padding: 30px; border-top: 1px solid #111; color: #666; margin-top: auto; font-size: 0.8rem;}
-
-        /* --- LOADING SCREEN --- */
         #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease-out; }
         .loader-text { font-family: 'Verdana', sans-serif; color: #82dbe0; font-size: 2rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; margin: 0 0 15px 0; text-shadow: 0 0 15px rgba(0, 243, 255, 0.5); }
         .progress-container { width: 150px; height: 4px; background-color: #333333; border-radius: 2px; overflow: hidden; }
         .progress-bar { height: 100%; width: 0%; background-color: #00ffff; box-shadow: 0 0 10px #00f3ff; transition: width 3s ease-in-out; }
     </style>
-    
 </head>
-<body oncontextmenu="return false;"> <div id="loading-screen">
+<body oncontextmenu="return false;"> 
+    
+    <div id="loading-screen">
         <h2 class="loader-text">SESHANK</h2>
         <div class="progress-container"><div class="progress-bar"></div></div>
     </div>
@@ -178,29 +161,48 @@
     <div class="cursor-glow"></div>
 
     <div class="side-social-bar">
-        <a href="https://www.instagram.com/sasi__07__" target="_blank" class="side-icon"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/919705683870" target="_blank" class="side-icon"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:bobbiliseshanksekhar@gmail.com" class="side-icon"><i class="fas fa-envelope"></i></a>
+        <a onclick="openAbout()" class="side-icon" title="About Me"><i class="fas fa-user-circle"></i></a>
+        
+        <a href="https://www.instagram.com/sasi__07__" target="_blank" class="side-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/919705683870" target="_blank" class="side-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:bobbiliseshanksekhar@gmail.com" class="side-icon" title="Email Me"><i class="fas fa-envelope"></i></a>
     </div>
 
     <header>
-    
-        <img src="img07.jpg" alt="Seshank Sekhar Profile" class="profile-pic">
+        <img src="img07.jpg" alt="Profile" class="profile-pic">
         <h1><span class="blue-text">SUPER</span> SNAP</h1>
-        
         <p class="subtitle" style="max-width: 600px; margin: 10px auto; line-height: 1.6;">
             Professional Mobile Photography by <strong>Seshank Sekhar</strong>.<br>
             Capturing Nature, Streets & Candid Moments across<br>
-            <span style="color: #00f3ff; font-weight: bold;">Vizag • Vizianagaram • Garividi</span>
+            <span style="color: #00f3ff; font-weight: bold;">Vizag • Garividi • Vizianagaram</span>
         </p>
-   
-</p>
     </header>
+
+    <div id="aboutModal" class="modal-overlay" onclick="closeAbout(event)">
+        <div class="about-content">
+            <span class="close-modal" onclick="closeAbout(event)">&times;</span>
+            <h3 style="color: #00f3ff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px;">
+                Behind the Lens
+            </h3>
+            <p style="font-size: 1rem; line-height: 1.8; color: #ccc; margin-bottom: 15px;">
+                Hi, I am <strong>Seshank Sekhar</strong>, a BCA graduate with a deep passion for visual storytelling. 
+                My journey began in <strong>2020</strong>, and I believe that photography is a never-ending learning process.
+            </p>
+            <p style="font-size: 1rem; line-height: 1.8; color: #ccc;">
+                I explore the world through my <strong>Redmi Note 9 Pro</strong>, crafting images with 
+                <em>Lightroom, Snapseed, and AI tools</em>. While I love capturing 
+                <strong>Portraits, Macro, and Black & White</strong> shots, my ultimate dream is to become a professional 
+                <strong>Wildlife Photographer</strong>.
+            </p>
+            <div style="margin-top: 30px; font-size: 0.9rem; color: #888;">
+                <i class="fas fa-map-marker-alt"></i> Based in Vizag • Garividi • Vizianagaram
+            </div>
+        </div>
+    </div>
 
     <div class="gallery-container" id="gallery"></div>
 
     <footer><p>"The world through my lens. © Super Snap"</p></footer>
-    
     <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -213,10 +215,30 @@
     </div>
 
     <script>
-        // --- DISABLE LONG PRESS (CONTEXT MENU) ON IMAGES ---
+        // --- ABOUT MODAL FUNCTIONS ---
+        function openAbout() {
+            const modal = document.getElementById('aboutModal');
+            const content = document.querySelector('.about-content');
+            modal.style.display = "flex";
+            setTimeout(() => {
+                modal.style.opacity = "1";
+                content.style.transform = "scale(1)";
+            }, 10);
+        }
+
+        function closeAbout(e) {
+            const modal = document.getElementById('aboutModal');
+            const content = document.querySelector('.about-content');
+            if (e.target === modal || e.target.classList.contains('close-modal')) {
+                modal.style.opacity = "0";
+                content.style.transform = "scale(0.9)";
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        }
+
+        // --- OTHER FUNCTIONS ---
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Loading
         window.addEventListener('load', () => {
             const screen = document.getElementById('loading-screen');
             const bar = document.querySelector('.progress-bar');
@@ -227,7 +249,6 @@
             }, 1800);
         });
 
-        // Cursor
         const cursor = document.querySelector('.cursor-glow');
         if (cursor) {
             document.addEventListener('mousemove', (e) => {
@@ -236,7 +257,6 @@
             });
         }
 
-        // Scroll
         const scrollBtn = document.getElementById('scrollTopBtn');
         window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -247,13 +267,11 @@
         };
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        // Lightbox
         function openLightbox(src, isVideo) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxVid = document.getElementById('lightbox-vid');
             const downloadLink = document.getElementById('download-link');
-
             lightbox.style.display = "flex";
             downloadLink.href = src; 
             document.body.style.overflow = "hidden"; 
@@ -303,7 +321,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // CORRECT FILE NAMES
+        // PHOTOS LIST
         const myMedia = [
             'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg', 
             'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg', 'img10.jpg', 
@@ -406,10 +424,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
